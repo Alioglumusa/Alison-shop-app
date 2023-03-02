@@ -30,7 +30,7 @@ const {setCurrentUser} = useContext(UserContext)
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    createUserDocumentFromAuth(user);
   };
 
   const handleSubmit = async (event) => {
@@ -41,7 +41,6 @@ const {setCurrentUser} = useContext(UserContext)
         email,
         password
       );
-      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
